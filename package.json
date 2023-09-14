@@ -1,7 +1,7 @@
 {
   "name": "upload-ia",
   "private": true,
-  "version": "0.0.0",
+  "version": "B1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
