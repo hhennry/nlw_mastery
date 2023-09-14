@@ -1,0 +1,43 @@
+# @name Hollow
+GET http://localhost:3333
+
+###
+
+# @name Prompts
+GET http://localhost:3333/prompts
+
+###
+
+# @name Videos
+POST http://localhost:3333/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="exemplo.mp3"
+Content-Type: audio/mpeg
+
+< ./exemplo.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# @name create-transcription
+POST http://localhost:3333/videos/b44bc27a-7a1c-4d12-bd33-7a402573c3f3/transcription
+Content-Type: application/json
+
+{
+    "prompt": "Câmara Municipal de Porto alegre ajuda a Prefeitura Municipal de Porto Alegre na campanha aos desabrigados pelas enchentes."
+}
+
+###
+
+# @name Generate-AIComplete
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+
+{
+    "videoId": "b44bc27a-7a1c-4d12-bd33-7a402573c3f3",
+    "temperature": 0.5,
+    "template": "Gere um resumo da transcrição do vídeo informada a seguir: '''{transcription}'''"
+}
